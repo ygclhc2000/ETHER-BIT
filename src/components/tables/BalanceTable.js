@@ -28,7 +28,7 @@ const BalanceTable = () => {
                     <td>{exchangeEtherBalance}</td>
                 </tr>
                 <tr>
-                    <td>DAPP</td>
+                    <td>NKC</td>
                     <td>{tokenBalance}</td>
                     <td>{exchangeTokenBalance}</td>
                 </tr>

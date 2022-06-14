@@ -6,7 +6,7 @@ contract Token {
     using SafeMath for uint256;
 
     // Variables
-    string public name = "Neko Token";
+    string public name = "NekoCoin";
     string public symbol = "Neko";
     uint256 public decimals = 18;
     uint256 public totalSupply;

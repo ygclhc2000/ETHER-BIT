@@ -41,7 +41,7 @@ contract('Exchange', ([deployer, feeAccount, user1, user2]) => {
         })
     })
 
-    describe('depositing Ether', async () => {
+    describe('depositing Ether&Token', async () => {
         let result
         let amount
 
@@ -50,7 +50,7 @@ contract('Exchange', ([deployer, feeAccount, user1, user2]) => {
             result = await exchange.depositEther({ from: user1, value: amount })
         })
 
-        it('tracks ether deposit', async () => {
+        it('tracks Ether&Token deposit', async () => {
             const balance = await exchange.tokens(ETHER_ADDRESS, user1)
             balance.toString().should.equal(amount.toString())
         })
@@ -68,7 +68,7 @@ contract('Exchange', ([deployer, feeAccount, user1, user2]) => {
         })
     })
 
-    describe('withdrawing Ether', async () => {
+    describe('withdrawing Ether&Token', async () => {
         let result
         let amount = ether(1)
 
@@ -83,7 +83,7 @@ contract('Exchange', ([deployer, feeAccount, user1, user2]) => {
                 result = await exchange.withdrawEther(amount, { from: user1 })
             })
 
-            it('withdraws Ether funds', async () => {
+            it('withdraws Ether&Token funds', async () => {
                 const balance = await exchange.tokens(ETHER_ADDRESS, user1)
                 balance.toString().should.equal('0')
             })

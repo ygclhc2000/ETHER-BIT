@@ -120,15 +120,15 @@ const _decorateMyOpenOrder = (order, account) => {
 }
 
 const _decorateGraphData = (orders) => {
-    // Group orders by minute for the graph
-    orders = groupBy(orders, (o) => moment.unix(o.timestamp).startOf('minute').format())
+    // Group orders by hour for the graph
+    orders = groupBy(orders, (o) => moment.unix(o.timestamp).startOf('hour').format())
 
-    const minutes = Object.keys(orders)
+    const hours = Object.keys(orders)
 
     // Build the graph series
-    const graphData = minutes.map((minute) => {
-        // Fetch all orders from the current minute
-        const group = orders[minute]
+    const graphData = hours.map((hour) => {
+        // Fetch all orders from the current hour
+        const group = orders[hour]
 
         // Calculate price values for open, high, low, close
         const open = group[0] // First order
@@ -138,7 +138,7 @@ const _decorateGraphData = (orders) => {
 
 
         return ({
-            x: new Date(minute),
+            x: new Date(hour),
             y: [open.tokenPrice, high.tokenPrice, low.tokenPrice, close.tokenPrice]
         })
     })
